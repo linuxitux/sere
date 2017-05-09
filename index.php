@@ -10,8 +10,9 @@ include "config.php";
 </head>
 <body>
 <center>
-<h4>CPU</h4>
-<canvas id="cpu" width="300" height="300">No data available.</canvas>
+<h3>CPU Utilisation</h3>
+<canvas id="cpu" width="300" height="300">Your browser doesn't support canvas.</canvas>
+<p><span id="cpu_value">No data available.</span></p>
 </center>
 
 <script>

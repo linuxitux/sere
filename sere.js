@@ -25,6 +25,7 @@ function updateMetrics(iface) {
 
   // Update stats
   cpu = '1.35';
+  document.getElementById('cpu_value').innerHTML = cpu+" %";
 
   // Get CPU chart
   var cpuChart = getCanvasContext('cpu');
@@ -50,7 +51,7 @@ function updateMetrics(iface) {
   cpuChart.beginPath();
   cpuChart.lineWidth = 2;
   cpuChart.moveTo(cx,cy); // move to the center
-  angle = Math.PI * (cpu/6000); // 100% CPU equals pi
+  angle = Math.PI - (Math.PI * (cpu/100)); // 100% CPU equals pi
   // Calculate displacements based on radius and angle
   dx = -(cx-minx) * Math.sin(angle);
   dy = -(cx-minx) * Math.cos(angle);
