@@ -39,22 +39,23 @@ function updateMetrics(iface) {
   gradient.addColorStop(0.6,'yellow');
   gradient.addColorStop(1,'red');
 
-  // Draw arc
+  // Draw clock background
   cpuChart.beginPath();
   cpuChart.arc(cx,cy,cx-minx,1*Math.PI,2*Math.PI,false);
   cpuChart.lineWidth = 30;
   cpuChart.strokeStyle=gradient;
   cpuChart.stroke();
 
-   // Draw line
+  // Draw clock hand
   cpuChart.beginPath();
   cpuChart.lineWidth = 2;
-  lienzo.moveTo(cx,cy); // posiciono el lápiz en el centro del recuadro
-  angulo = 2*Math.PI * (minuto/60); // calculo el ángulo del minutero
-  // Calculo los desplazamientos para el minutero
-  dx = minutero * Math.sin(angulo);
-  dy = -minutero * Math.cos(angulo);
-  lienzo.lineTo(cx+dx,cy+dy);
-  lienzo.stroke();
+  cpuChart.moveTo(cx,cy); // move to the center
+  angle = Math.PI * (cpu/100); // 100% CPU equals pi
+  // Calculate displacements based on radius and angle
+  dx = -(cx-minx) * Math.sin(angle);
+  dy = -(cx-minx) * Math.cos(angle);
+  cpuChart.lineTo(cx+dx,cy+dy);
+  cpuChart.strokeStyle = 'black';
+  cpuChart.stroke();
 
 }
