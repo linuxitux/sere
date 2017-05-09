@@ -50,7 +50,7 @@ function updateMetrics(iface) {
   cpuChart.beginPath();
   cpuChart.lineWidth = 2;
   cpuChart.moveTo(cx,cy); // move to the center
-  angle = Math.PI * (cpu/100); // 100% CPU equals pi
+  angle = Math.PI * (cpu/6000); // 100% CPU equals pi
   // Calculate displacements based on radius and angle
   dx = -(cx-minx) * Math.sin(angle);
   dy = -(cx-minx) * Math.cos(angle);
