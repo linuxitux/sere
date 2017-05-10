@@ -12,6 +12,6 @@ CPU utilisation, memory and swap usage, I/O transfers, load, network activity an
 
 ## Installation
 
- wget https://github.com/linuxitux/sere/archive/v0.1.0.tar.gz
- tar xzf v0.1.0.tar.gz -C /var/www
+    wget https://github.com/linuxitux/sere/archive/v0.1.0.tar.gz
+    tar xzf v0.1.0.tar.gz -C /var/www
 
