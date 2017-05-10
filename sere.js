@@ -34,7 +34,7 @@ function updateMetrics() {
   };
 
   // Parse JSON response
-  getJSON('https://www.linuxito.com/mon20170505/jstats.php', function(data) {
+  getJSON('jstats.php', function(data) {
     // Get new metrics
     cpu = data.CPU; // CPU
     tps = data.tps; // tps
