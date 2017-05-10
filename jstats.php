@@ -45,28 +45,29 @@ while ($i < $lines) {
       break;
 
     case "kbmemfree":
-      $metrics["%memused"] = (float)$moutput[$i+1][3];
+      $metrics["memused"] = (float)$moutput[$i+1][3];
       $i++;
       break;
 
     case "kbswpfree":
-      $metrics["%swpused"] = (float)$moutput[$i+1][3];
+      $metrics["swpused"] = (float)$moutput[$i+1][3];
       $i++;
       break;
 
     case "runq-sz":
-      $metrics["ldavg-1"] = (float)$moutput[$i+1][3];
+      $metrics["ldavg1"] = (float)$moutput[$i+1][3];
       $i++;
       break;
 
     case $iface:
       // rxkB/s txkB/s
-      $metrics[$iface."-rxkB"] = (float)$moutput[$i][4];
-      $metrics[$iface."-txkB"] = (float)$moutput[$i][5];
-      break; 
+      $metrics["ifacerxkB"] = (float)$moutput[$i][4];
+      $metrics["ifacetxkB"] = (float)$moutput[$i][5];
+      break;
   }
 
   $i++;
 }
 
+header('Content-Type: application/json;charset=UTF-8');
 echo json_encode($metrics);

@@ -1,62 +1,152 @@
+// Metrics
+cpu = ''; // CPU
+tps = ''; // tps
+mem = ''; // memused
+swp = ''; // swpused
+lda = ''; // ldavg1
+ifr = ''; // ifacerxkB
+ift = ''; // ifacetxkB
+
+function updateMetrics() {
+
+  // Get fresh stats
+  var getJSON = function(url, successHandler, errorHandler) {
+    var xhr = typeof XMLHttpRequest != 'undefined'
+      ? new XMLHttpRequest()
+      : new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.open('get', url, true);
+    xhr.onreadystatechange = function() {
+      var status;
+      var data;
+      // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
+      if (xhr.readyState == 4) {
+        status = xhr.status;
+        if (status == 200) {
+          data = JSON.parse(xhr.responseText);
+          successHandler && successHandler(data);
+        }
+        else {
+          errorHandler && errorHandler(status);
+        }
+      }
+    };
+    xhr.send();
+  };
+
+  // Parse JSON response
+  getJSON('https://www.linuxito.com/mon20170505/jstats.php', function(data) {
+    // Get new metrics
+    cpu = data.CPU; // CPU
+    tps = data.tps; // tps
+    mem = data.memused; // memused
+    swp = data.swpused; // swpused
+    lda = data.ldavg1; // ldavg1
+    ifr = data.ifacerxkB; // ifacerxkB
+    ift = data.ifacetxkB; // ifacetxkB    
+
+    // Update values
+    document.getElementById('cpu_value').innerHTML = cpu.toFixed(2)+" %";
+    document.getElementById('tps_value').innerHTML = tps;
+    document.getElementById('mem_value').innerHTML = mem.toFixed(2)+" %";
+    document.getElementById('swp_value').innerHTML = swp.toFixed(2)+" %";
+    document.getElementById('lda_value').innerHTML = lda;
+    document.getElementById('ifr_value').innerHTML = ifr.toFixed(2)+" kB/s";
+    document.getElementById('ift_value').innerHTML = ift.toFixed(2)+" kB/s";
+
+    // Update graphics
+    updateGraphics();
+
+  }, function(status) {
+    alert('Something went wrong.');
+  });
+
+}
+
 function getCanvasContext(x) {
   var canvas = document.getElementById(x);
   return canvas.getContext("2d");   
 }
 
-function updateMetrics(iface) {
-  // Metrics
-  cpu = ''; // CPU
-  tps = ''; // tps
-  mem = ''; // %memused
-  swp = ''; // %swpused
-  lda = ''; // ldavg-1
-  ifr = ''; // iface-rxkB
-  ift = ''; // iface-txkB
-
+function drawClock(canvas,value) {
   // Limits (pixels)
   var minx = 50;
   var maxx = 250;
-  var miny = 50; 
-  var maxy = 250;
+  var miny = 10; 
+  var maxy = 150;
 
   // Center coordinates
   cx = minx+(maxx-minx)/2;
-  cy = miny+(maxy-miny)/2;
-
-  // Update stats
-  cpu = '0';
-  document.getElementById('cpu_value').innerHTML = cpu+" %";
-
-  // Get CPU chart
-  var cpuChart = getCanvasContext('cpu');
+  //cy = miny+(maxy-miny)/2;
+  cy = 150;
 
   // Clear canvas
-  cpuChart.clearRect(0,0,300,300);
+  canvas.clearRect(0,0,300,160);
 
   // Create gradient
-  var gradient = cpuChart.createLinearGradient(minx,miny,maxx,miny);
-  gradient.addColorStop(0,'green');
-  gradient.addColorStop(0.4,'yellow');
-  gradient.addColorStop(0.6,'yellow');
-  gradient.addColorStop(1,'red');
+  //var gradient = canvas.createLinearGradient(minx,miny,maxx,miny);
+  //gradient.addColorStop(0,'green');
+  //gradient.addColorStop(0.4,'yellow');
+  //gradient.addColorStop(0.6,'yellow');
+  //gradient.addColorStop(1,'red');
 
   // Draw clock background
-  cpuChart.beginPath();
-  cpuChart.arc(cx,cy,cx-minx,1*Math.PI,2*Math.PI,false);
-  cpuChart.lineWidth = 30;
-  cpuChart.strokeStyle=gradient;
-  cpuChart.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy,cx-minx-20,1*Math.PI,1.2*Math.PI,false);
+  canvas.lineWidth = 90;
+  canvas.strokeStyle='#42b64a';
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy,cx-minx-20,1.2*Math.PI,1.4*Math.PI,false);
+  canvas.strokeStyle='#cedf29';
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy,cx-minx-20,1.4*Math.PI,1.6*Math.PI,false);
+  canvas.strokeStyle='#fabc0f';
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy,cx-minx-20,1.6*Math.PI,1.8*Math.PI,false);
+  canvas.strokeStyle='#f3661f';
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy,cx-minx-20,1.8*Math.PI,2*Math.PI,false);
+  canvas.strokeStyle='#cb201f';
+  canvas.stroke();
 
   // Draw clock hand
-  cpuChart.beginPath();
-  cpuChart.lineWidth = 2;
-  cpuChart.moveTo(cx,cy); // move to the center
-  angle = Math.PI/2 + (Math.PI * (cpu/100));
+  canvas.beginPath();
+  canvas.arc(cx,cy-10,6,2*Math.PI,false);
+  canvas.strokeStyle='black';
+  canvas.lineWidth = 7;
+  canvas.fill();
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.lineWidth = 4;
+  canvas.moveTo(cx,cy-10); // move to the center
+  angle = Math.PI/2 + (Math.PI * (value/100));
   // Calculate displacements based on radius and angle
   dx = -(cx-minx) * Math.sin(angle);
   dy = (cx-minx) * Math.cos(angle);
-  cpuChart.lineTo(cx+dx,cy+dy);
-  cpuChart.strokeStyle = 'black';
-  cpuChart.stroke();
+  canvas.lineTo(cx+dx,cy+dy-5);
+  canvas.strokeStyle = 'black';
+  canvas.stroke();
+  canvas.beginPath();
+  canvas.arc(cx,cy-10,2,2*Math.PI,false);
+  canvas.strokeStyle='white';
+  canvas.lineWidth = 1;
+  canvas.fillStyle = 'white';
+  canvas.fill();
+  canvas.stroke();
+}
 
+function updateGraphics(i) {
+
+  // Update CPU chart
+  drawClock(getCanvasContext('cpu'),cpu);
+
+  // Update memfree chart
+  drawClock(getCanvasContext('mem'),mem);
+
+  // Update swp chart
+  drawClock(getCanvasContext('swp'),swp);
+  
 }

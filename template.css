@@ -1,0 +1,16 @@
+body {
+font-family: sans-serif;
+}
+
+h4 {
+margin-top: 10px;
+}
+
+.metrics {
+float: left;
+padding: 15px;
+border: 2px solid #eee;
+margin: 5px;
+background-color: #fafafa;
+height: 240px;
+}
