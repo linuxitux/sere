@@ -2,15 +2,44 @@ body {
 font-family: sans-serif;
 }
 
+h1 {
+font-size: 24px;
+text-align: center;
+color: #666;
+}
+
 h4 {
+font-size: 18px;
 margin-top: 10px;
+margin-bottom: 10px;
+text-align: center;
+color: #666;
+}
+
+code {
+font-size: 120%;
+color: #222;
 }
 
 .metrics {
 float: left;
 padding: 15px;
-border: 2px solid #eee;
+/*border: 2px solid #eee;*/
 margin: 5px;
 background-color: #fafafa;
 height: 240px;
+}
+
+.bigmetric {
+font-size: 200%;
+}
+
+.smallnote {
+word-wrap: break-word;
+font-size: 80%;
+width: 300px;
+}
+
+.netunit {
+color: #666;
 }

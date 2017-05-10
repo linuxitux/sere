@@ -45,13 +45,13 @@ function updateMetrics() {
     ift = data.ifacetxkB; // ifacetxkB    
 
     // Update values
-    document.getElementById('cpu_value').innerHTML = cpu.toFixed(2)+" %";
-    document.getElementById('tps_value').innerHTML = tps;
-    document.getElementById('mem_value').innerHTML = mem.toFixed(2)+" %";
-    document.getElementById('swp_value').innerHTML = swp.toFixed(2)+" %";
-    document.getElementById('lda_value').innerHTML = lda;
-    document.getElementById('ifr_value').innerHTML = ifr.toFixed(2)+" kB/s";
-    document.getElementById('ift_value').innerHTML = ift.toFixed(2)+" kB/s";
+    document.getElementById('cpu_value').innerHTML = '<code>'+cpu.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('tps_value').innerHTML = '<code>'+tps+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('mem_value').innerHTML = '<code>'+mem.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('swp_value').innerHTML = '<code>'+swp.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('ifr_value').innerHTML = '<code>'+ifr.toFixed(2)+' kB/s</code>';
+    document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
 
     // Update graphics
     updateGraphics();
@@ -148,5 +148,15 @@ function updateGraphics(i) {
 
   // Update swp chart
   drawClock(getCanvasContext('swp'),swp);
-  
+
+  // Update tps chart
+  document.getElementById('tps_value_big').innerHTML = tps;
+
+  // Update lda chart
+  document.getElementById('lda_value_big').innerHTML = lda;
+
+  // Update iface chart
+  document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
+  document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
+
 }
