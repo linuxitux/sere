@@ -22,11 +22,11 @@ CPU utilisation, memory and swap usage, I/O transfers, load, network activity an
     cd /var/www/sere
     vi config.php
 
-Edit the following varaibles accordingly:
+Edit the following variables accordingly:
 
 * $user - username for login.
 * $pass - password for login.
 * $iface - network device you want to monitor.
-* $samples - number of samples for each request, 1 per second.
+* $samples - number of sar samples for each request, 1 per second.
 * $update_interval - number of seconds between updates. It must be greater than the number of samples.
 
