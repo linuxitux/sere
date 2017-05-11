@@ -1,14 +1,21 @@
 body {
-font-family: sans-serif;
+font-family: Verdana;
+margin: 0;
+background-color: #f0f0f0;
 }
 
 h1 {
-font-size: 24px;
+font-size: 22px;
+font-weight: 100;
 text-align: center;
-color: #666;
+color: #f0f0f0;
+background-color: #222;
+/*border-bottom: 2px solid #404040;*/
+padding: 5px;
 }
 
 h4 {
+font-weight: 300;
 font-size: 18px;
 margin-top: 10px;
 margin-bottom: 10px;
@@ -21,13 +28,21 @@ font-size: 120%;
 color: #222;
 }
 
+.container {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
+
 .metrics {
-float: left;
 padding: 15px;
-/*border: 2px solid #eee;*/
 margin: 5px;
 background-color: #fafafa;
+/*border: 2px solid #fafafa;*/
 height: 240px;
+display: inline-block;
+max-width: 300px;
+vertical-align: top;
 }
 
 .bigmetric {
@@ -38,8 +53,19 @@ font-size: 200%;
 word-wrap: break-word;
 font-size: 80%;
 width: 300px;
+text-align: left;
 }
 
 .netunit {
 color: #666;
+}
+
+.login {
+margin: 2px;
+width: 200px;
+}
+
+.login_error {
+color: red;
+font-size: 70%;
 }

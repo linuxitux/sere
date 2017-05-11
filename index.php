@@ -1,6 +1,12 @@
 <?php
 
 include "config.php";
+session_start();
+
+if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
+  header("Location: login.php");
+  die();
+}
 
 ?>
 <html>
@@ -14,7 +20,7 @@ include "config.php";
 
 <h1>Load statistics for <?php echo $hostname; ?></h1>
 
-<div style="max-width: 1020px; margin-left: auto; margin-right: auto;">
+<div class="container">
 
 <div class="metrics">
 <h4>Metrics</h4>

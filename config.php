@@ -2,6 +2,10 @@
 
 /**** Configuration ****/
 
+// User
+$user = "admin";
+// Passsword for user
+$pass = "ironmaiden";
 // Hostname
 $hostname = exec("hostname -A");
 // Network device
