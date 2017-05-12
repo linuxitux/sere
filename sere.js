@@ -148,6 +148,7 @@ function drawClock(canvas,value) {
   // Draw clock hand
   canvas.beginPath();
   canvas.arc(cx,cy-10,6,2*Math.PI,false);
+  canvas.fillStyle='black';
   canvas.strokeStyle='black';
   canvas.lineWidth = 7;
   canvas.fill();
@@ -162,13 +163,14 @@ function drawClock(canvas,value) {
   canvas.lineTo(cx+dx,cy+dy-5);
   canvas.strokeStyle = 'black';
   canvas.stroke();
+/*
   canvas.beginPath();
   canvas.arc(cx,cy-10,2,2*Math.PI,false);
   canvas.strokeStyle='white';
   canvas.lineWidth = 1;
   canvas.fillStyle = 'white';
   canvas.fill();
-  canvas.stroke();
+*/
 }
 
 function updateGraphics(i) {
