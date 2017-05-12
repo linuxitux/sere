@@ -17,7 +17,7 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
 </head>
 <body>
 
-<h1>Load statistics for <?php echo $hostname; ?></h1>
+<h1>Load statistics for <?php echo $hostname; ?> - sere</h1>
 
 <div class="container">
 
