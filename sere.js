@@ -1,11 +1,11 @@
 // Metrics
-cpu = ''; // CPU
-tps = ''; // tps
-mem = ''; // memused
-swp = ''; // swpused
-lda = ''; // ldavg1
-ifr = ''; // ifacerxkB
-ift = ''; // ifacetxkB
+var cpu = ''; // CPU
+var tps = ''; // tps
+var mem = ''; // memused
+var swp = ''; // swpused
+var lda = ''; // ldavg1
+var ifr = ''; // ifacerxkB
+var ift = ''; // ifacetxkB
 
 function updateMetrics() {
 
@@ -36,11 +36,11 @@ function updateMetrics() {
   // Parse JSON response
   getJSON('jstats.php', function(data) {
     // Get new metrics
-    cpu = data.CPU; // CPU
-    tps = data.tps; // tps
-    mem = data.memused; // memused
-    swp = data.swpused; // swpused
-    lda = data.ldavg1; // ldavg1
+    cpu = data.CPU;       // CPU
+    tps = data.tps;       // tps
+    mem = data.memused;   // memused
+    swp = data.swpused;   // swpused
+    lda = data.ldavg1;    // ldavg1
     ifr = data.ifacerxkB; // ifacerxkB
     ift = data.ifacetxkB; // ifacetxkB    
 
@@ -54,7 +54,7 @@ function updateMetrics() {
     document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
 
     // Update graphics
-    updateGraphics();
+    updateGraphics(data);
 
   }, function(status) {
     alert('Something went wrong.');
@@ -173,7 +173,28 @@ function drawClock(canvas,value) {
 */
 }
 
-function updateGraphics(i) {
+function drawTopTable(data) {
+  var table = "";
+  for (var i=0; i<11; i++) {
+    var line = "";
+    if (data['top'+i.toString()] !== null) {
+      line = data['top'+i.toString()];
+    }
+    table += "<tr>";
+    for (var j=0; j<7; j++) {
+      if (line[j] !== null) {
+        table += '<td>'+line[j]+'</td>';
+      }
+      else {
+        table += '<td></td>';
+      }
+    }
+    table += '</tr>';
+  }
+  document.getElementById('top').innerHTML = table;
+}
+
+function updateGraphics(data) {
 
   // Update CPU chart
   drawClock(getCanvasContext('cpu'),cpu);
@@ -193,5 +214,10 @@ function updateGraphics(i) {
   // Update iface chart
   document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
   document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
+
+  // Update top chart
+  if (data !== null) {
+    drawTopTable(data);
+  }
 
 }

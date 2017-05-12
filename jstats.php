@@ -70,5 +70,28 @@ while ($i < $lines) {
     $i++;
 }
 
+// Get top processes
+$output = "";
+exec("top -b -n 1 | grep -A 10 PID", $output);
+$index = 0;
+
+foreach ($output as $line) {
+    // Clean multiple spaces
+    $line = preg_replace("!\s+!", " ", $line);
+
+    // Explode line
+    $aline = explode(" ", $line);
+
+    // Recover only columns 5, 6, 7, 8, 9, 10 and 12
+    $metrics["top$index"][0] = $aline[5];
+    $metrics["top$index"][1] = $aline[6];
+    $metrics["top$index"][2] = $aline[7];
+    $metrics["top$index"][3] = $aline[8];
+    $metrics["top$index"][4] = $aline[9];
+    $metrics["top$index"][5] = $aline[10];
+    $metrics["top$index"][6] = $aline[12];
+    $index++;
+}
+
 header('Content-Type: application/json;charset=UTF-8');
 echo json_encode($metrics);

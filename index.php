@@ -17,7 +17,7 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
 </head>
 <body>
 
-<h1>Load statistics for <?php echo $hostname; ?> - sere</h1>
+<h1>Load stats for <span class="hostname"><?php echo $hostname; ?></span> - sere</h1>
 
 <div class="container">
 
@@ -84,10 +84,15 @@ specified interval.</p>
 <p class="smallnote">Total number of kilobytes received and transmitted per second.</p>
 </div>
 
+<div class="metrics">
+<h4>Top processes</h4>
+<table id="top" class="toptable">No data.</table>
+</div>
+
 </div>
 
 <script>
-updateGraphics();
+updateGraphics(null);
 var loop = window.setInterval(updateMetrics,1000*<?php echo $update_interval; ?>);
 </script>
 
