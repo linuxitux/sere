@@ -4,8 +4,7 @@ require_once "config.php";
 session_start();
 
 if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
-  header("Location: login.php");
-  die();
+    header("Location: login.php");
 }
 
 ?>
@@ -75,8 +74,10 @@ specified interval.</p>
 <center>
 <p class="bigmetric">
 <table border=0 width="300px">
-<tr><td align="right"><p class="bigmetric"><span id="ifr_value_big" style="font-size: 80%;">No data.</span></p></td><td><p><b>&darr;</b> received</p></td></tr>
-<tr><td align="right"><p class="bigmetric"><span id="ift_value_big" style="font-size: 80%;">No data.</span></p></td><td><p><b>&uarr;</b> sent</p></td></tr>
+<tr><td align="right"><p class="bigmetric"><span id="ifr_value_big" style="font-size: 80%;">No data.</span></p></td>
+<td><p><b>&darr;</b> received</p></td></tr>
+<tr><td align="right"><p class="bigmetric"><span id="ift_value_big" style="font-size: 80%;">No data.</span></p></td>
+<td><p><b>&uarr;</b> sent</p></td></tr>
 </table>
 </p>
 </center>
