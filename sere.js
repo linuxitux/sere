@@ -82,34 +82,67 @@ function drawClock(canvas,value) {
   // Clear canvas
   canvas.clearRect(0,0,300,160);
 
-  // Create gradient
-  //var gradient = canvas.createLinearGradient(minx,miny,maxx,miny);
-  //gradient.addColorStop(0,'green');
-  //gradient.addColorStop(0.4,'yellow');
-  //gradient.addColorStop(0.6,'yellow');
-  //gradient.addColorStop(1,'red');
-
   // Draw clock background
   canvas.beginPath();
-  canvas.arc(cx,cy,cx-minx-20,1*Math.PI,1.2*Math.PI,false);
+  canvas.arc(cx,cy,cx-minx-20,1*Math.PI,1.21*Math.PI,false);
+  var startX = cx+(cx-minx-20)*Math.cos(1*Math.PI);
+  var startY = cy+(cx-minx-20)*Math.sin(1*Math.PI);
+  var endX = cx+(cx-minx-20)*Math.cos(1.21*Math.PI);
+  var endY = cy+(cx-minx-20)*Math.sin(1.21*Math.PI);
+  var gradient = canvas.createLinearGradient(startX,startY,endX,endY);
+  gradient.addColorStop(0,'#42b64a');
+  gradient.addColorStop(1,'#cedf29');
   canvas.lineWidth = 90;
-  canvas.strokeStyle='#42b64a';
+  //canvas.strokeStyle='#42b64a';
+  canvas.strokeStyle = gradient;
   canvas.stroke();
   canvas.beginPath();
-  canvas.arc(cx,cy,cx-minx-20,1.2*Math.PI,1.4*Math.PI,false);
-  canvas.strokeStyle='#cedf29';
+  canvas.arc(cx,cy,cx-minx-20,1.2*Math.PI,1.41*Math.PI,false);
+  startX = cx+(cx-minx-20)*Math.cos(1.2*Math.PI);
+  startY = cy+(cx-minx-20)*Math.sin(1.2*Math.PI);
+  endX = cx+(cx-minx-20)*Math.cos(1.41*Math.PI);
+  endY = cy+(cx-minx-20)*Math.sin(1.41*Math.PI);
+  gradient = canvas.createLinearGradient(startX,startY,endX,endY);
+  gradient.addColorStop(0,'#cedf29');
+  gradient.addColorStop(1,'#fabc0f');
+  canvas.strokeStyle = gradient;
+  //canvas.strokeStyle='#cedf29';
   canvas.stroke();
   canvas.beginPath();
-  canvas.arc(cx,cy,cx-minx-20,1.4*Math.PI,1.6*Math.PI,false);
-  canvas.strokeStyle='#fabc0f';
+  canvas.arc(cx,cy,cx-minx-20,1.4*Math.PI,1.61*Math.PI,false);
+  startX = cx+(cx-minx-20)*Math.cos(1.4*Math.PI);
+  startY = cy+(cx-minx-20)*Math.sin(1.4*Math.PI);
+  endX = cx+(cx-minx-20)*Math.cos(1.61*Math.PI);
+  endY = cy+(cx-minx-20)*Math.sin(1.61*Math.PI);
+  gradient = canvas.createLinearGradient(startX,startY,endX,endY);
+  gradient.addColorStop(0,'#fabc0f');
+  gradient.addColorStop(1,'#f3661f');
+  canvas.strokeStyle = gradient;
+  //canvas.strokeStyle='#fabc0f';
   canvas.stroke();
   canvas.beginPath();
-  canvas.arc(cx,cy,cx-minx-20,1.6*Math.PI,1.8*Math.PI,false);
-  canvas.strokeStyle='#f3661f';
+  canvas.arc(cx,cy,cx-minx-20,1.6*Math.PI,1.81*Math.PI,false);
+  startX = cx+(cx-minx-20)*Math.cos(1.6*Math.PI);
+  startY = cy+(cx-minx-20)*Math.sin(1.6*Math.PI);
+  endX = cx+(cx-minx-20)*Math.cos(1.81*Math.PI);
+  endY = cy+(cx-minx-20)*Math.sin(1.81*Math.PI);
+  gradient = canvas.createLinearGradient(startX,startY,endX,endY);
+  gradient.addColorStop(0,'#f3661f');
+  gradient.addColorStop(1,'#cb201f');
+  canvas.strokeStyle = gradient;
+  //canvas.strokeStyle='#f3661f';
   canvas.stroke();
   canvas.beginPath();
   canvas.arc(cx,cy,cx-minx-20,1.8*Math.PI,2*Math.PI,false);
-  canvas.strokeStyle='#cb201f';
+  startX = cx+(cx-minx-20)*Math.cos(1.8*Math.PI);
+  startY = cy+(cx-minx-20)*Math.sin(1.8*Math.PI);
+  endX = cx+(cx-minx-20)*Math.cos(2*Math.PI);
+  endY = cy+(cx-minx-20)*Math.sin(2*Math.PI);
+  gradient = canvas.createLinearGradient(startX,startY,endX,endY);
+  gradient.addColorStop(0,'#cb201f');
+  gradient.addColorStop(1,'#c42175');
+  canvas.strokeStyle = gradient;
+  //canvas.strokeStyle='#cb201f';
   canvas.stroke();
 
   // Draw clock hand

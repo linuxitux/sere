@@ -14,7 +14,16 @@ https://youtu.be/mGfcBkvquis
 * PHP >= 5.4
 * sysstat >= 10.0.5 (http://pagesperso-orange.fr/sebastien.godard/)
 
+
+### SysStat installation
+
+On Debian and derivatives:
+
     apt-get install sysstat
+
+On Red Hat and derivatives:
+
+    yum install sysstat
 
 ## Installation
 
