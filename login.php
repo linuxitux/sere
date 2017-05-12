@@ -5,22 +5,25 @@ require_once "config.php";
 session_start();
 
 if (isset($_SESSION['login']) && ($_SESSION['login'] === true)) {
-  header("Location: index.php");
-  die();
+    header("Location: index.php");
+    die();
 }
 
 $msg = "";
 $valid = false;
 
 if (isset($_POST['user'])) {
-  $valid = $_POST['user'] == $user && $_POST['pass'] == $pass;
-  if (!$valid) $msg = "Invalid username or password.";
-  else $_SESSION['login'] = true;
+    $valid = $_POST['user'] == $user && $_POST['pass'] == $pass;
+    if (!$valid) {
+        $msg = "Invalid username or password.";
+    } else {
+        $_SESSION['login'] = true;
+    }
 }
 
 if ($valid) {
-  header("Location: index.php");
-  die();
+    header("Location: index.php");
+    die();
 }
 
 ?>
