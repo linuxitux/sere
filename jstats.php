@@ -77,19 +77,19 @@ $index = 0;
 
 foreach ($output as $line) {
     // Clean multiple spaces
-    $line = preg_replace("!\s+!", " ", $line);
+    $line = preg_replace("!\s+!", " ", ltrim($line));
 
     // Explode line
     $aline = explode(" ", $line);
 
-    // Recover only columns 5, 6, 7, 8, 9, 10 and 12
-    $metrics["top$index"][0] = $aline[5];
-    $metrics["top$index"][1] = $aline[6];
-    $metrics["top$index"][2] = $aline[7];
-    $metrics["top$index"][3] = $aline[8];
-    $metrics["top$index"][4] = $aline[9];
-    $metrics["top$index"][5] = $aline[10];
-    $metrics["top$index"][6] = $aline[12];
+    // Recover only columns 4, 5, 6, 7, 8, 9 and 11
+    $metrics["top$index"][0] = $aline[4];
+    $metrics["top$index"][1] = $aline[5];
+    $metrics["top$index"][2] = $aline[6];
+    $metrics["top$index"][3] = $aline[7];
+    $metrics["top$index"][4] = $aline[8];
+    $metrics["top$index"][5] = $aline[9];
+    $metrics["top$index"][6] = $aline[11];
     $index++;
 }
 

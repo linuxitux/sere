@@ -41,11 +41,9 @@ if ($valid) {
 <p>Enter username and password:</p>
 <input class="login" type="text" value="<?php echo $_POST['user']; ?>" id="user" name="user" /><br />
 <input class="login" type="password" value="" id="pass" name="pass" /><br />
-<!--
 <div class="login_error">
 <?php echo $msg; ?>
 </div>
--->
 <input class="login" type="submit" value="Login" name="login" />
 </div>
 </div>

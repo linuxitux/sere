@@ -73,3 +73,21 @@ font-size: 70%;
 .hostname {
 color: #fff;
 }
+
+.toptable {
+width: 300px;
+font-family: monospace;
+font-size: 12px;
+}
+
+.psleeping {
+color: #999;
+}
+
+.pwaiting {
+color: #fabc0f;
+}
+
+.prunning {
+color: #cb201f;
+}

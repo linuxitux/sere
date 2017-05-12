@@ -86,7 +86,7 @@ specified interval.</p>
 
 <div class="metrics">
 <h4>Top processes</h4>
-<table id="top" class="toptable">No data.</table>
+<table id="top" class="toptable"><tr><td>No data.</td></tr></table>
 </div>
 
 </div>

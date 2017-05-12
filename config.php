@@ -5,7 +5,7 @@
 // User
 $user = "admin";
 // Passsword for user
-$pass = "ironmaiden";
+$pass = "poipoipoi";
 // Hostname
 $hostname = exec("hostname -A");
 // Network device

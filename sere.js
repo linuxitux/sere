@@ -49,7 +49,8 @@ function updateMetrics() {
     document.getElementById('tps_value').innerHTML = '<code>'+tps+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
     document.getElementById('mem_value').innerHTML = '<code>'+mem.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
     document.getElementById('swp_value').innerHTML = '<code>'+swp.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
-    document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+    if (lda == '0') document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>'
+    else document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
     document.getElementById('ifr_value').innerHTML = '<code>'+ifr.toFixed(2)+' kB/s</code>';
     document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
 
@@ -64,7 +65,7 @@ function updateMetrics() {
 
 function getCanvasContext(x) {
   var canvas = document.getElementById(x);
-  return canvas.getContext("2d");   
+  return canvas.getContext('2d');   
 }
 
 function drawClock(canvas,value) {
@@ -174,15 +175,19 @@ function drawClock(canvas,value) {
 }
 
 function drawTopTable(data) {
-  var table = "";
+  var table = '';
   for (var i=0; i<11; i++) {
-    var line = "";
+    var line = '';
     if (data['top'+i.toString()] !== null) {
       line = data['top'+i.toString()];
     }
-    table += "<tr>";
+    var trclass = 'psleeping';
+    if (line[3] == 'D') trclass = 'pwaiting';
+    if (line[3] == 'R') trclass = 'prunning';
+    if (i>0) table += '<tr class="'+trclass+'">';
+    else table += '<tr>';
     for (var j=0; j<7; j++) {
-      if (line[j] !== null) {
+      if (line[j] !== null && j>2) {
         table += '<td>'+line[j]+'</td>';
       }
       else {
