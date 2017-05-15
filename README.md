@@ -34,6 +34,7 @@ On Red Hat and derivatives:
 ## Configuration
 
     cd /var/www/sere
+    cp config.example.php config.php
     vi config.php
 
 Edit the following variables accordingly:
