@@ -91,3 +91,8 @@ color: #fabc0f;
 .prunning {
 color: #cb201f;
 }
+
+.uptime {
+text-align: left;
+width: 300px;
+}

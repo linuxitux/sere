@@ -6,6 +6,7 @@ var swp = ''; // swpused
 var lda = ''; // ldavg1
 var ifr = ''; // ifacerxkB
 var ift = ''; // ifacetxkB
+var upt = ''; // uptime
 
 function updateMetrics() {
 
@@ -43,6 +44,7 @@ function updateMetrics() {
     lda = data.ldavg1;    // ldavg1
     ifr = data.ifacerxkB; // ifacerxkB
     ift = data.ifacetxkB; // ifacetxkB    
+    upt = data.uptime;    // uptime    
 
     // Update values
     document.getElementById('cpu_value').innerHTML = '<code>'+cpu.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
@@ -199,6 +201,30 @@ function drawTopTable(data) {
   document.getElementById('top').innerHTML = table;
 }
 
+function drawUptime()  {
+  var uptime = upt.split(',');
+  if (uptime.length > 1) {
+    var uptime0 = uptime[0].trim().split(' ');
+    var ctime = uptime0[0];
+    var up = uptime0[2] + ' ' + uptime0[3] + ',' + uptime[1];
+    var users = uptime[2].trim();
+    var aload1 = uptime[3].split(':');
+    var load1 = aload1[1].trim();
+    var load5 = uptime[4].trim();
+    var load15 = uptime[5].trim();
+    var output = '';
+    output += '<tr><td>Time</td><td>' + ctime + '</td></tr>';
+    output += '<tr><td>Up</td><td>' + up + '</td></tr>';
+    output += '<tr><td>Users</td><td>' + users + '</td></tr>';
+    document.getElementById('uptime').innerHTML = output;
+    output = '';
+    output += '<tr><td>Last minute</td><td>' + load1 + '</td></tr>';
+    output += '<tr><td>Last 5 minutes</td><td>' + load5 + '</td></tr>';
+    output += '<tr><td>Last 15 minutes</td><td>' + load15 + '</td></tr>';
+    document.getElementById('loadaverages').innerHTML = output;
+  }
+}
+
 function updateGraphics(data) {
 
   // Update CPU chart
@@ -225,4 +251,6 @@ function updateGraphics(data) {
     drawTopTable(data);
   }
 
+  // Update uptime
+  drawUptime();
 }

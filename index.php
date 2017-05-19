@@ -50,16 +50,6 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
 </div>
 
 <div class="metrics">
-<h4>I/O</h4>
-<center><p class="bigmetric"><span id="tps_value_big">No data.</span></p></center>
-<p class="smallnote">Total number of transfers per second that
-were issued to physical devices. A transfer
-is an I/O request to a physical device.
-Multiple logical requests can be combined
-into a single I/O request to the device.</p>
-</div>
-
-<div class="metrics">
 <h4>Load</h4>
 <center><p class="bigmetric"><span id="lda_value_big">No data.</span></p></center>
 <p class="smallnote">System load average for the last minute.
@@ -85,8 +75,25 @@ specified interval.</p>
 </div>
 
 <div class="metrics">
+<h4>I/O</h4>
+<center><p class="bigmetric"><span id="tps_value_big">No data.</span></p></center>
+<p class="smallnote">Total number of transfers per second that
+were issued to physical devices. A transfer
+is an I/O request to a physical device.
+Multiple logical requests can be combined
+into a single I/O request to the device.</p>
+</div>
+
+<div class="metrics">
 <h4>Top processes</h4>
 <table id="top" class="toptable"><tr><td>No data.</td></tr></table>
+</div>
+
+<div class="metrics">
+<h4>Uptime</h4>
+<table id="uptime" class="toptable"><tr><td>No data.</td></tr></table>
+<h4>Load averages</h4>
+<table id="loadaverages" class="toptable"><tr><td>No data.</td></tr></table>
 </div>
 
 </div>

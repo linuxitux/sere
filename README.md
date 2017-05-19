@@ -3,7 +3,7 @@ Small tool to monitor your server/VPS load from a Web browser. Mobile friendly.
 
 sere it's a small tool to live monitor you server from any Web browser.
 You only need to install it on your server in any browsable folder, and start monitoring
-CPU utilisation, memory and swap usage, I/O transfers, load, network activity and more.
+CPU utilization, memory and swap usage, I/O transfers, load, network activity and more.
 
 ## Demo
 

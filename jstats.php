@@ -93,5 +93,11 @@ foreach ($output as $line) {
     $index++;
 }
 
+// Get uptime
+$output = "";
+exec("uptime", $output);
+$metrics['uptime'] = $output[0];
+
+// Send JSON response
 header('Content-Type: application/json;charset=UTF-8');
 echo json_encode($metrics);
