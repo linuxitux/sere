@@ -8,6 +8,10 @@ var ifr = ''; // ifacerxkB
 var ift = ''; // ifacetxkB
 var upt = ''; // uptime
 
+// Movement
+var speed = 10;    // Boxes will move 10 pixels per step
+var direction = 1; // 1 moves in the positive direction; -1 vice versa
+
 function updateMetrics() {
 
   // Get fresh stats
@@ -45,16 +49,6 @@ function updateMetrics() {
     ifr = data.ifacerxkB; // ifacerxkB
     ift = data.ifacetxkB; // ifacetxkB    
     upt = data.uptime;    // uptime    
-
-    // Update values
-    document.getElementById('cpu_value').innerHTML = '<code>'+cpu.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
-    document.getElementById('tps_value').innerHTML = '<code>'+tps+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
-    document.getElementById('mem_value').innerHTML = '<code>'+mem.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
-    document.getElementById('swp_value').innerHTML = '<code>'+swp.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
-    if (lda == '0') document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>'
-    else document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
-    document.getElementById('ifr_value').innerHTML = '<code>'+ifr.toFixed(2)+' kB/s</code>';
-    document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
 
     // Update graphics
     updateGraphics(data);
@@ -227,30 +221,50 @@ function drawUptime()  {
 
 function updateGraphics(data) {
 
+  // UPdate Metrics chart
+  if ((cpu != '') && (document.getElementById('metricstable') != null)) {
+    // Update values
+    document.getElementById('cpu_value').innerHTML = '<code>'+cpu.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('tps_value').innerHTML = '<code>'+tps+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('mem_value').innerHTML = '<code>'+mem.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('swp_value').innerHTML = '<code>'+swp.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
+    if (lda == '0') document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>'
+    else document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+    document.getElementById('ifr_value').innerHTML = '<code>'+ifr.toFixed(2)+' kB/s</code>';
+    document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
+  }
+
   // Update CPU chart
-  drawClock(getCanvasContext('cpu'),cpu);
+  if (document.getElementById('cpu') != null)
+      drawClock(getCanvasContext('cpu'),cpu);
 
   // Update memfree chart
-  drawClock(getCanvasContext('mem'),mem);
+  if (document.getElementById('mem') != null)
+      drawClock(getCanvasContext('mem'),mem);
 
   // Update swp chart
-  drawClock(getCanvasContext('swp'),swp);
+  if (document.getElementById('swp') != null)
+      drawClock(getCanvasContext('swp'),swp);
 
   // Update tps chart
-  document.getElementById('tps_value_big').innerHTML = tps;
+  if (document.getElementById('tps_value_big') != null)
+      document.getElementById('tps_value_big').innerHTML = tps;
 
   // Update lda chart
-  document.getElementById('lda_value_big').innerHTML = lda;
+  if (document.getElementById('lda_value_big') != null)
+      document.getElementById('lda_value_big').innerHTML = lda;
 
   // Update iface chart
-  document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
-  document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
+  if (document.getElementById('ifr_value_big') != null)
+      document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
+      document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
 
   // Update top chart
-  if (data !== null) {
-    drawTopTable(data);
+  if ((document.getElementById('top') != null) && (data !== null)) {
+      drawTopTable(data);
   }
 
   // Update uptime
-  drawUptime();
+  if (document.getElementById('uptime') != null)
+      drawUptime();
 }

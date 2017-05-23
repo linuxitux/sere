@@ -7,48 +7,48 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
     header("Location: login.php");
 }
 
+function drawGraph($graph) {
+
+    switch($graph) {
+
+        case 'cpu':
 ?>
-<html>
-<head>
-<title>stats for <?php echo $hostname; ?> - sere</title>
-<script src="sere.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="template.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
-<h1>Load stats for <span class="hostname"><?php echo $hostname; ?></span> - sere</h1>
-
-<div class="container">
-
-<div class="metrics">
-<h4>Metrics</h4>
-<table border="0" width="300px">
-<tr><td>CPU</td><td align="right"><span id="cpu_value">No data.</span></td></tr>
-<tr><td>TPS</td><td align="right"><span id="tps_value">No data.</span></td></tr>
-<tr><td>Memory</td><td align="right"><span id="mem_value">No data.</span></td></tr>
-<tr><td>Swap</td><td align="right"><span id="swp_value">No data.</span></td></tr>
-<tr><td>Load</td><td align="right"><span id="lda_value">No data.</span></td></tr>
-<tr><td>kB received</td><td align="right"><span id="ifr_value">No data.</span></td></tr>
-<tr><td>kB sent</td><td align="right"><span id="ift_value">No data.</span></td></tr>
-</table>
-</div>
-
 <div class="metrics">
 <h4>CPU</h4>
 <canvas id="cpu" width="300" height="160">Your browser doesn't support canvas.</canvas>
 </div>
+<?php
+        break;
 
+        case 'mem':
+?>
 <div class="metrics">
 <h4>Memory</h4>
 <canvas id="mem" width="300" height="160">Your browser doesn't support canvas.</canvas>
 </div>
+<?php
+        break;
 
+        case 'swp':
+?>
 <div class="metrics">
 <h4>Swap</h4>
 <canvas id="swp" width="300" height="160">Your browser doesn't support canvas.</canvas>
 </div>
+<?php
+        break;
 
+        case 'top':
+?>
+<div class="metrics">
+<h4>Top processes</h4>
+<table id="top" class="toptable"><tr><td>No data.</td></tr></table>
+</div>
+<?php
+        break;
+
+        case 'lda':
+?>
 <div class="metrics">
 <h4>Load</h4>
 <center><p class="bigmetric"><span id="lda_value_big">No data.</span></p></center>
@@ -58,7 +58,11 @@ of runnable or running tasks (R state), and the number
 of tasks in uninterruptible sleep (D state) over the
 specified interval.</p>
 </div>
+<?php
+        break;
 
+        case 'ifx':
+?>
 <div class="metrics">
 <h4><?php echo $iface; ?></h4>
 <center>
@@ -73,7 +77,11 @@ specified interval.</p>
 </center>
 <p class="smallnote">Total number of kilobytes received and transmitted per second.</p>
 </div>
+<?php
+        break;
 
+        case 'tps':
+?>
 <div class="metrics">
 <h4>I/O</h4>
 <center><p class="bigmetric"><span id="tps_value_big">No data.</span></p></center>
@@ -83,18 +91,61 @@ is an I/O request to a physical device.
 Multiple logical requests can be combined
 into a single I/O request to the device.</p>
 </div>
+<?php
+       break;
 
+       case 'met':
+?>
 <div class="metrics">
-<h4>Top processes</h4>
-<table id="top" class="toptable"><tr><td>No data.</td></tr></table>
+<h4>Metrics</h4>
+<table id="metricstable" border="0" width="300px">
+<tr><td>CPU</td><td align="right"><span id="cpu_value">No data.</span></td></tr>
+<tr><td>TPS</td><td align="right"><span id="tps_value">No data.</span></td></tr>
+<tr><td>Memory</td><td align="right"><span id="mem_value">No data.</span></td></tr>
+<tr><td>Swap</td><td align="right"><span id="swp_value">No data.</span></td></tr>
+<tr><td>Load</td><td align="right"><span id="lda_value">No data.</span></td></tr>
+<tr><td>kB received</td><td align="right"><span id="ifr_value">No data.</span></td></tr>
+<tr><td>kB sent</td><td align="right"><span id="ift_value">No data.</span></td></tr>
+</table>
 </div>
+<?php
+        break;
 
+        case 'upt':
+?>
 <div class="metrics">
 <h4>Uptime</h4>
 <table id="uptime" class="toptable"><tr><td>No data.</td></tr></table>
 <h4>Load averages</h4>
 <table id="loadaverages" class="toptable"><tr><td>No data.</td></tr></table>
 </div>
+<?php
+        break;
+    }
+
+}
+
+?>
+<html>
+<head>
+<title>stats for <?php echo $hostname; ?> - sere</title>
+<script src="sere.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="template.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<h1>Load stats for <span class="hostname"><?php echo $hostname; ?></span> - sere</h1>
+
+<div class="container">
+
+<?php
+
+foreach($graphs as $g) {
+  drawGraph($g);
+}
+
+?>
 
 </div>
 
