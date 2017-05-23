@@ -7,6 +7,7 @@ var lda = ''; // ldavg1
 var ifr = ''; // ifacerxkB
 var ift = ''; // ifacetxkB
 var upt = ''; // uptime
+var con = ''; // connections
 
 // Movement
 var speed = 10;    // Boxes will move 10 pixels per step
@@ -41,14 +42,15 @@ function updateMetrics() {
   // Parse JSON response
   getJSON('jstats.php', function(data) {
     // Get new metrics
-    cpu = data.CPU;       // CPU
-    tps = data.tps;       // tps
-    mem = data.memused;   // memused
-    swp = data.swpused;   // swpused
-    lda = data.ldavg1;    // ldavg1
-    ifr = data.ifacerxkB; // ifacerxkB
-    ift = data.ifacetxkB; // ifacetxkB    
-    upt = data.uptime;    // uptime    
+    cpu = data.CPU;         // CPU
+    tps = data.tps;         // tps
+    mem = data.memused;     // memused
+    swp = data.swpused;     // swpused
+    lda = data.ldavg1;      // ldavg1
+    ifr = data.ifacerxkB;   // ifacerxkB
+    ift = data.ifacetxkB;   // ifacetxkB    
+    upt = data.uptime;      // uptime    
+    con = data.connections; // connections
 
     // Update graphics
     updateGraphics(data);
@@ -232,6 +234,8 @@ function updateGraphics(data) {
     else document.getElementById('lda_value').innerHTML = '<code>'+lda+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
     document.getElementById('ifr_value').innerHTML = '<code>'+ifr.toFixed(2)+' kB/s</code>';
     document.getElementById('ift_value').innerHTML = '<code>'+ift.toFixed(2)+' kB/s</code>';
+    document.getElementById('connections').innerHTML = '<code>'+con+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
+
   }
 
   // Update CPU chart
@@ -255,9 +259,10 @@ function updateGraphics(data) {
       document.getElementById('lda_value_big').innerHTML = lda;
 
   // Update iface chart
-  if (document.getElementById('ifr_value_big') != null)
+  if (document.getElementById('ifr_value_big') != null) {
       document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
       document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
+  }
 
   // Update top chart
   if ((document.getElementById('top') != null) && (data !== null)) {

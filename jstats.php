@@ -98,6 +98,11 @@ $output = "";
 exec("uptime", $output);
 $metrics['uptime'] = $output[0];
 
+// Get ESTABLISHED connections
+$output = "";
+exec("netstat -tun | grep ESTABLISHED | wc -l", $output);
+$metrics['connections'] = $output[0];
+
 // Send JSON response
 header('Content-Type: application/json;charset=UTF-8');
 echo json_encode($metrics);

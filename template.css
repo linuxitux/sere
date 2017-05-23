@@ -49,6 +49,11 @@ vertical-align: top;
 font-size: 200%;
 }
 
+.nosobigmetric {
+font-size: 150%;
+text-align: right;
+}
+
 .smallnote {
 word-wrap: break-word;
 font-size: 80%;

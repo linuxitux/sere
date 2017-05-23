@@ -9,6 +9,8 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
 
 function drawGraph($graph) {
 
+    global $iface;
+
     switch($graph) {
 
         case 'cpu':
@@ -69,7 +71,7 @@ specified interval.</p>
 <p class="bigmetric">
 <table border=0 width="300px">
 <tr><td align="right"><p class="bigmetric"><span id="ifr_value_big" style="font-size: 80%;">No data.</span></p></td>
-<td><p><b>&darr;</b> received</p></td></tr>
+<td width="35%"><p><b>&darr;</b> received</p></td></tr>
 <tr><td align="right"><p class="bigmetric"><span id="ift_value_big" style="font-size: 80%;">No data.</span></p></td>
 <td><p><b>&uarr;</b> sent</p></td></tr>
 </table>
@@ -106,6 +108,7 @@ into a single I/O request to the device.</p>
 <tr><td>Load</td><td align="right"><span id="lda_value">No data.</span></td></tr>
 <tr><td>kB received</td><td align="right"><span id="ifr_value">No data.</span></td></tr>
 <tr><td>kB sent</td><td align="right"><span id="ift_value">No data.</span></td></tr>
+<tr><td>ESTABLISHED</td><td align="right"><span id="connections">No data.</span></td></tr>
 </table>
 </div>
 <?php
