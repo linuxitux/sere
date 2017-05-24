@@ -24,7 +24,7 @@ color: #666;
 }
 
 code {
-font-size: 120%;
+font-size: 1.2em;
 color: #222;
 }
 
@@ -100,4 +100,8 @@ color: #f00;
 .uptime {
 text-align: left;
 width: 300px;
+}
+
+.metricstable td {
+font-size: 0.8em;
 }
