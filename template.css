@@ -5,7 +5,7 @@ background-color: #f0f0f0;
 }
 
 h1 {
-font-size: 22px;
+font-size: 20px;
 font-weight: 100;
 text-align: center;
 color: #eee;
@@ -76,7 +76,7 @@ font-size: 70%;
 }
 
 .hostname {
-color: #fff;
+/*color: #fff;*/
 }
 
 .toptable {
@@ -90,11 +90,11 @@ color: #999;
 }
 
 .pwaiting {
-color: #fabc0f;
+color: #fb0;
 }
 
 .prunning {
-color: #cb201f;
+color: #f00;
 }
 
 .uptime {
