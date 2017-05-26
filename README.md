@@ -13,7 +13,7 @@ CPU utilization, memory and swap usage, I/O transfers, load, network activity an
 ## Requierements
 
 * PHP >= 5.4
-* sysstat >= 10.0.5 (http://pagesperso-orange.fr/sebastien.godard/)
+* sysstat == 10.0.5 (http://pagesperso-orange.fr/sebastien.godard/)
 
 
 ### SysStat installation
@@ -34,6 +34,9 @@ On Red Hat and derivatives:
 ## Configuration
 
     cd /var/www/sere
+    > data.json
+    chown www-data:www-data data.json
+    chmod 750 data.json
     cp config.example.php config.php
     vi config.php
 
@@ -44,4 +47,4 @@ Edit the following variables accordingly:
 * $iface - network device you want to monitor.
 * $samples - number of sar samples for each request, 1 per second.
 * $update_interval - number of seconds between updates. It must be greater than the number of samples.
-
+* SYSSTATDATAPATH - location of sarXX files (default is /var/log/sysstat)

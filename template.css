@@ -2,21 +2,46 @@ body {
 font-family: Verdana;
 margin: 0;
 background-color: #f0f0f0;
+font-size: 100%;
 }
 
 h1 {
-font-size: 20px;
+font-size: 1.3em;
 font-weight: 100;
 text-align: center;
 color: #eee;
 background-color: #222;
-/*border-bottom: 2px solid #404040;*/
+padding: 5px;
+margin: 0;
+}
+
+h2 {
+font-size: 1.1em;
+font-weight: 100;
+text-align: center;
+color: #aaa;
+margin: 0;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+color: #00f;
+}
+
+a {
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+.buttons {
 padding: 5px;
 }
 
-h4 {
+h3 {
 font-weight: 300;
-font-size: 18px;
+1font-size: 1.1em;
 margin-top: 10px;
 margin-bottom: 10px;
 text-align: center;
@@ -46,23 +71,28 @@ vertical-align: top;
 }
 
 .bigmetric {
-font-size: 200%;
+font-size: 1.3em;
 }
 
 .nosobigmetric {
-font-size: 150%;
+font-size: 1.1em;
 text-align: right;
 }
 
 .smallnote {
 word-wrap: break-word;
-font-size: 80%;
+font-size: .75em;
 width: 300px;
 text-align: left;
 }
 
 .netunit {
 color: #666;
+}
+
+.ifacetable {
+border-spacing: 0;
+font-size: 90%;
 }
 
 .login {
@@ -72,7 +102,7 @@ width: 200px;
 
 .login_error {
 color: red;
-font-size: 70%;
+font-size:.8em;
 }
 
 .hostname {
@@ -82,7 +112,8 @@ font-size: 70%;
 .toptable {
 width: 300px;
 font-family: monospace;
-font-size: 12px;
+font-size: .9em;
+text-align: left;
 }
 
 .psleeping {
@@ -104,4 +135,121 @@ width: 300px;
 
 .metricstable td {
 font-size: 0.8em;
+text-align: left;
+}
+
+#content {
+padding: 5px;
+font-size: 0.75em;
+}
+
+/* -- graph -- */
+.graph {
+	height: 360px;
+	position: relative;
+	z-index: 50;
+}
+
+.graph h2 {
+border: 0;
+font-size: 1.3em;
+margin-top: 10px;
+color: #666;
+}
+
+/* -- graph axis lines and value markers -- */
+.graph .axislines {
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #000;
+	left: 48px;
+	padding: 4px 0 4px 4px;
+	position: absolute;
+	top: 35px;
+}
+
+.graph .axislines canvas {
+	cursor: crosshair;
+}
+
+.graph .markervalue,
+.graph .markertime {
+	font-size: 0.9em;
+	margin: 0;
+	position: absolute;
+}
+
+.graph .markervalue {
+	background: url(img/valuenotch.gif) no-repeat 100% 0;
+	left: -49px;
+	padding-right: 2px;
+	text-align: right;
+	width: 46px;
+}
+
+.graph .markertime {
+	background: url(img/timenotch.gif) no-repeat 100% 0;
+	padding-right: 2px;
+	text-align: right;
+	top: 221px;
+	width: 78px;
+}
+
+.graph .markertime span {
+	display: block;
+}
+
+/* -- graph legend -- */
+.graph .legend {
+	left: 0;
+	list-style: none;
+	position: absolute;
+	top: 265px;
+}
+
+.graph .legend li {
+	float: left;
+	font-size: 1em;
+	margin-right: 20px;
+}
+
+.graph .legend .box {
+	background: #f00;
+	border: 1px solid #000;
+	float: left;
+	height: 12px;
+	padding: 0;
+	width: 12px;
+}
+
+.graph .legend div {
+	margin-left: 20px;
+}
+
+.graph .legend span {
+	display: block;
+	white-space: nowrap;
+}
+
+/* -- graph info box -- */
+#graphinfobox {
+	background: #ccc;
+	border: 1px solid #000;
+	opacity: 0.8;
+	padding: 10px;
+	position: absolute;
+	width: 230px;
+}
+
+#graphinfobox div {
+	font-weight: bold;
+}
+
+#graphinfobox div.date {
+	border-bottom: 1px solid #000;
+	margin-bottom: 5px;
+}
+
+#graphinfobox div span {
+	font-weight: normal;
+	margin-left: 5px;
 }

@@ -56,7 +56,7 @@ function updateMetrics() {
     updateGraphics(data);
 
   }, function(status) {
-    alert('Something went wrong.');
+    //alert('Something went wrong.');
   });
 
 }
@@ -226,8 +226,8 @@ function drawUptime()  {
 
 function updateGraphics(data) {
 
-  // UPdate Metrics chart
-  if ((cpu != '') && (document.getElementById('metricstable') != null)) {
+  // Update Metrics chart
+  if ((cpu !== '') && (document.getElementById('metricstable') != null)) {
     // Update values
     document.getElementById('cpu_value').innerHTML = '<code>'+cpu.toFixed(2)+' %&nbsp;&nbsp;&nbsp;</code>';
     document.getElementById('tps_value').innerHTML = '<code>'+tps+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>';
@@ -254,15 +254,15 @@ function updateGraphics(data) {
       drawClock(getCanvasContext('swp'),swp);
 
   // Update tps chart
-  if (document.getElementById('tps_value_big') != null)
+  if (tps !== '' && document.getElementById('tps_value_big') != null)
       document.getElementById('tps_value_big').innerHTML = tps;
 
   // Update lda chart
-  if (document.getElementById('lda_value_big') != null)
+  if (lda !== '' && document.getElementById('lda_value_big') != null)
       document.getElementById('lda_value_big').innerHTML = lda;
 
   // Update iface chart
-  if (document.getElementById('ifr_value_big') != null) {
+  if (ifr !== '' && document.getElementById('ifr_value_big') != null) {
       document.getElementById('ifr_value_big').innerHTML = ifr+' <span class="netunit">kB/s</span>';
       document.getElementById('ift_value_big').innerHTML = ift+' <span class="netunit">kB/s</span>';
   }

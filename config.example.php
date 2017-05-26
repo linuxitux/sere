@@ -32,3 +32,10 @@ $update_interval = 3;
 $graphs = array('cpu','mem','swp','top','lda','ifx','tps','met','upt');
 
 /***********************/
+
+// Sysstat Graph config
+define('SYSSTATDATAPATH','/var/log/sysstat');
+define('JSONSTRUCTUREFILENAME','data.json');
+define('NETWORKINTERFACELIST',serialize(array($iface)));
+//define('NETWORKINTERFACELIST',serialize(array('lo',$iface)));
+
