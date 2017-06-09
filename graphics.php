@@ -18,29 +18,30 @@ class graphics {
 
                 case 'cpu':
                 ?>
-                <div class="metrics">
-                <h3>CPU</h3>
-                <canvas id="cpu" width="300" height="160">Your browser doesn't support canvas.</canvas>
+                <div class="small-metrics">
+                <h4>CPU</h4>
+                <canvas id="cpu" width="140" height="85">Your browser doesn't support canvas.</canvas>
                 </div>
                 <?php
                 break;
 
                 case 'mem':
                 ?>
-                <div class="metrics">
-                <h3>Memory</h3>
-                <canvas id="mem" width="300" height="160">Your browser doesn't support canvas.</canvas>
+                <div class="small-metrics">
+                <h4>Memory</h4>
+                <canvas id="mem" width="140" height="85">Your browser doesn't support canvas.</canvas>
                 </div>
                 <?php
                 break;
 
                 case 'swp':
                 ?>
-                <div class="metrics">
-                <h3>Swap</h3>
-                <canvas id="swp" width="300" height="160">Your browser doesn't support canvas.</canvas>
+                <div class="small-metrics">
+                <h4>Swap</h4>
+                <canvas id="swp" width="140" height="85">Your browser doesn't support canvas.</canvas>
                 </div>
                 <?php
+
                 break;
 
                 case 'top':
@@ -101,7 +102,7 @@ class graphics {
                 ?>
                 <div class="metrics">
                 <h3>Metrics</h3>
-                <table id="metricstable" class="metricstable" border="0" width="300px">
+                <table id="metricstable" class="metricstable">
                 <tr><td>CPU</td><td style="text-align: right;"><span id="cpu_value">No data.</span></td></tr>
                 <tr><td>TPS</td><td style="text-align: right;"><span id="tps_value">No data.</span></td></tr>
                 <tr><td>Memory</td><td style="text-align: right;"><span id="mem_value">No data.</span></td></tr>

@@ -9,6 +9,9 @@ var ift = ''; // ifacetxkB
 var upt = ''; // uptime
 var con = ''; // connections
 
+// Debug
+var stop = 0;
+
 // Movement
 var speed = 10;    // Boxes will move 10 pixels per step
 var direction = 1; // 1 moves in the positive direction; -1 vice versa
@@ -66,20 +69,30 @@ function getCanvasContext(x) {
   return canvas.getContext('2d');   
 }
 
-function drawClock(canvas,value) {
+function drawClock(canvas,value,width) {
   // Limits (pixels)
   var minx = 50;
   var maxx = 250;
   var miny = 10; 
-  var maxy = 150;
+  var maxy = 160;
+
+  if (width != null) {
+    minx = 0;
+    maxx = width;
+    var height = width * 0.6; 
+    miny = 0.05 * height; 
+    maxy = height;
+  }
 
   // Center coordinates
   cx = minx+(maxx-minx)/2;
-  //cy = miny+(maxy-miny)/2;
-  cy = 150;
+  cy = maxy;
+
+  // Radius
+  var radius = cx * 0.6;
 
   // Clear canvas
-  canvas.clearRect(0,0,300,160);
+  canvas.clearRect(0,0,maxx,maxy);
 
   // Draw clock background
   var startAngle = 1*Math.PI;
@@ -116,12 +129,16 @@ function drawClock(canvas,value) {
 
   var arcs = colors.length - 1;
 
+//var debug = minx+","+maxx+","+miny+","+maxy+","+radius;
+//document.getElementById('debug').innerHTML = debug;
+//stop = 1;
+
   // For each color-1 draw a piece of arc
   for (var i=0; i<arcs; i++) {
 
     // Begin new arc
     canvas.beginPath();
-    canvas.lineWidth = 90;
+    canvas.lineWidth = maxy*0.6;
 
     // Select color
     startColor = colors[i];
@@ -137,13 +154,13 @@ function drawClock(canvas,value) {
     if (endAnglei > endAngle) endAnglei = endAngle;
 
     // Define current arc
-    canvas.arc(cx,cy,cx-minx-20,startAnglei,endAnglei,false);
+    canvas.arc(cx,cy,radius,startAnglei,endAnglei,false);
 
     // Compute start and end points for current gradient
-    startX = cx+(cx-minx-20)*Math.cos(startAnglei);
-    startY = cy+(cx-minx-20)*Math.sin(startAnglei);
-    endX = cx+(cx-minx-20)*Math.cos(endAnglei);
-    endY = cy+(cx-minx-20)*Math.sin(endAnglei);
+    startX = cx+(radius)*Math.cos(startAnglei);
+    startY = cy+(radius)*Math.sin(startAnglei);
+    endX = cx+(radius)*Math.cos(endAnglei);
+    endY = cy+(radius)*Math.sin(endAnglei);
 
     // Define current gradient
     gradient = canvas.createLinearGradient(startX,startY,endX,endY);
@@ -156,20 +173,20 @@ function drawClock(canvas,value) {
 
   // Draw clock hand
   canvas.beginPath();
-  canvas.arc(cx,cy-10,6,2*Math.PI,false);
+  canvas.arc(cx,cy-maxy*0.05,maxy*0.025,2*Math.PI,false);
   canvas.fillStyle='black';
   canvas.strokeStyle='black';
-  canvas.lineWidth = 7;
+  canvas.lineWidth = maxy*0.05;
   canvas.fill();
   canvas.stroke();
   canvas.beginPath();
-  canvas.lineWidth = 4;
-  canvas.moveTo(cx,cy-10); // move to the center
+  canvas.lineWidth = maxy*0.025;
+  canvas.moveTo(cx,cy-maxy*0.05); // move to the center
   angle = Math.PI/2 + (Math.PI * (value/100));
   // Calculate displacements based on radius and angle
-  dx = -(cx-minx) * Math.sin(angle);
-  dy = (cx-minx) * Math.cos(angle);
-  canvas.lineTo(cx+dx,cy+dy-5);
+  dx = -(radius*1.3) * Math.sin(angle);
+  dy = (radius*1.3) * Math.cos(angle);
+  canvas.lineTo(cx+dx,cy+dy-maxy*0.03);
   canvas.strokeStyle = 'black';
   canvas.stroke();
 
@@ -226,6 +243,11 @@ function drawUptime()  {
 
 function updateGraphics(data) {
 
+  // Debug
+  if (stop) {
+    return;
+  }
+
   // Update Metrics chart
   if ((cpu !== '') && (document.getElementById('metricstable') != null)) {
     // Update values
@@ -243,15 +265,15 @@ function updateGraphics(data) {
 
   // Update CPU chart
   if (document.getElementById('cpu') != null)
-      drawClock(getCanvasContext('cpu'),cpu);
+      drawClock(getCanvasContext('cpu'),cpu,140);
 
   // Update memfree chart
   if (document.getElementById('mem') != null)
-      drawClock(getCanvasContext('mem'),mem);
+      drawClock(getCanvasContext('mem'),mem,140);
 
   // Update swp chart
   if (document.getElementById('swp') != null)
-      drawClock(getCanvasContext('swp'),swp);
+      drawClock(getCanvasContext('swp'),swp,140);
 
   // Update tps chart
   if (tps !== '' && document.getElementById('tps_value_big') != null)

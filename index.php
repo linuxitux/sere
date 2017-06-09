@@ -28,7 +28,7 @@ if (!isset($_SESSION['login']) || !($_SESSION['login'] === true)) {
 
 <h1>Stats for <span class="hostname"><?php echo $hostname; ?></span></h1>
 <h2><a class="buttons" href=".">LIVE</a>&nbsp;&#8226;&nbsp;<a class="buttons" href="?p=report">REPORT</a></h2>
-
+<div id="debug"></div>
 <?php
 
 if (isset($_GET["p"]) && $_GET["p"] == "report") {

@@ -95,7 +95,7 @@ foreach ($output as $line) {
 
 // Get uptime
 $output = "";
-exec("uptime", $output);
+exec("LANG=C uptime", $output);
 $metrics['uptime'] = $output[0];
 
 // Get ESTABLISHED connections
