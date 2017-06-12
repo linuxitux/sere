@@ -29,7 +29,7 @@ $update_interval = 3;
     upt - Uptime
 
 */
-$graphs = array('cpu','mem','swp','top','lda','ifx','tps','met','upt');
+$graphs = array('cpu','mem','swp','lda','tps','top','ifx','met','upt');
 
 /***********************/
 

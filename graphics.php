@@ -12,6 +12,7 @@ class graphics {
             return 1;
         }
 
+        // small graphics
         foreach ($this->graphList as $g) {
 
             switch($g) {
@@ -44,25 +45,54 @@ class graphics {
 
                 break;
 
-                case 'top':
-                ?>
-                <div class="metrics">
-                <h3>Top processes</h3>
-                <table id="top" class="toptable"><tr><td>No data.</td></tr></table>
-                </div>
-                <?php
-                break;
-
                 case 'lda':
                 ?>
-                <div class="metrics">
-                <h3>Load</h3>
+                <div class="small-metrics">
+                <h4>Load</h4>
                 <center><p class="bigmetric"><span id="lda_value_big">No data.</span></p></center>
+<!--
                 <p class="smallnote">System load average for the last minute.
                 The load average is calculated as the average number
                 of runnable or running tasks (R state), and the number
                 of tasks in uninterruptible sleep (D state) over the
                 specified interval.</p>
+-->
+                </div>
+                <?php
+                break;
+
+                case 'tps':
+                ?>
+                <div class="small-metrics">
+                <h4>I/O</h4>
+                <center><p class="bigmetric"><span id="tps_value_big">No data.</span></p></center>
+<!--
+                <p class="smallnote">Total number of transfers per second that
+                were issued to physical devices. A transfer
+                is an I/O request to a physical device.
+                Multiple logical requests can be combined
+                into a single I/O request to the device.</p>
+-->
+                </div>
+                <?php
+                break;
+
+            }
+
+        }
+
+        echo "<br />";
+
+        // big graphics
+        foreach ($this->graphList as $g) {
+
+            switch($g) {
+
+                case 'top':
+                ?>
+                <div class="metrics">
+                <h3>Top processes</h3>
+                <table id="top" class="toptable"><tr><td>No data.</td></tr></table>
                 </div>
                 <?php
                 break;
@@ -80,20 +110,6 @@ class graphics {
                 </table>
                 </center>
                 <p class="smallnote">Total number of kilobytes received and transmitted per second.</p>
-                </div>
-                <?php
-                break;
-
-                case 'tps':
-                ?>
-                <div class="metrics">
-                <h3>I/O</h3>
-                <center><p class="bigmetric"><span id="tps_value_big">No data.</span></p></center>
-                <p class="smallnote">Total number of transfers per second that
-                were issued to physical devices. A transfer
-                is an I/O request to a physical device.
-                Multiple logical requests can be combined
-                into a single I/O request to the device.</p>
                 </div>
                 <?php
                 break;
