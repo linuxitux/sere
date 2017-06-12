@@ -1,6 +1,6 @@
 var rendergraph = function() {
 
-	var colorlist = ['#f00','#0f0','#00f'],
+	var colorlist = ['#3bbe7c','#f1a62f','#e13545'],
 		valuemarkerspacing = 30,
 		timemarkerspacing = 150,
 		timemarkerwidth = 80,

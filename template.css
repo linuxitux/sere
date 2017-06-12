@@ -1,7 +1,7 @@
 body {
 font-family: Verdana;
 margin: 0;
-background-color: #f0f0f0;
+background-color: #DADFE1;
 font-size: 100%;
 }
 
@@ -9,8 +9,8 @@ h1 {
 font-size: 1.3em;
 font-weight: 100;
 text-align: center;
-color: #eee;
-background-color: #222;
+color: #ececec;
+background-color: #1BBC9B;
 padding: 5px;
 margin: 0;
 }
@@ -19,12 +19,12 @@ h2 {
 font-size: 1.1em;
 font-weight: 100;
 text-align: center;
-color: #aaa;
 margin: 0;
+color: #666;
 }
 
 a, a:link, a:visited, a:hover, a:active {
-color: #00f;
+color: #1BBC9B;
 }
 
 a {
@@ -54,7 +54,7 @@ h3, h4 {
 font-weight: 300;
 font-size: 1em;
 text-align: center;
-color: #666;
+color: #1BBC9B;
 }
 
 h3 {
@@ -79,15 +79,19 @@ text-align: center;
 }
 
 .metrics, .small-metrics {
+/*
 -webkit-border-radius: 5px;
 border-radius: 5px;
 -webkit-box-shadow: 0 0 5px 0 #bbb;
 box-shadow: 0 0 5px 0 #bbb;
+*/
 margin: 5px;
 display: inline-block;
 vertical-align: top;
-background-color: #fafafa;
+background-color: #ECECEC;
+/*
 border: 1px solid #bbb;
+*/
 max-width: 280px;
 min-width: 140px;
 }
@@ -116,6 +120,7 @@ word-wrap: break-word;
 font-size: .75em;
 width: 280px;
 text-align: left;
+color: #6C7A89;
 }
 
 .netunit {
@@ -149,15 +154,15 @@ text-align: left;
 }
 
 .psleeping {
-color: #999;
+color: #6C7A89;
 }
 
 .pwaiting {
-color: #fb0;
+color: #f1a62f;
 }
 
 .prunning {
-color: #f00;
+color: #e13545;
 }
 
 .uptime {
@@ -185,14 +190,13 @@ font-size: 0.75em;
 	height: 360px;
 	position: relative;
 	z-index: 50;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .graph h2 {
 border: 0;
 font-size: 1.3em;
 margin-top: 10px;
-color: #666;
 }
 
 /* -- graph axis lines and value markers -- */

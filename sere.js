@@ -101,6 +101,7 @@ function drawClock(canvas,value,width) {
   var endAnglei = null;
 
   var colors = [];
+/*
   colors.push('#18ff00');
   colors.push('#42ff00');
   colors.push('#6cff00');
@@ -116,6 +117,32 @@ function drawClock(canvas,value,width) {
   colors.push('#ff4000');
   colors.push('#ff2500');
   colors.push('#ff1800');
+*/
+
+  colors.push('#3bbe7c');
+  colors.push('#f7e930');
+  colors.push('#f1a62f');
+  colors.push('#e13545');
+/*
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+  colors.push('#');
+*/
 
   var startColor = null;
   var endColor = null;
@@ -174,8 +201,8 @@ function drawClock(canvas,value,width) {
   // Draw clock hand
   canvas.beginPath();
   canvas.arc(cx,cy-maxy*0.05,maxy*0.025,2*Math.PI,false);
-  canvas.fillStyle='black';
-  canvas.strokeStyle='black';
+  canvas.fillStyle='#231f20';
+  canvas.strokeStyle='#231f20';
   canvas.lineWidth = maxy*0.05;
   canvas.fill();
   canvas.stroke();
@@ -187,7 +214,7 @@ function drawClock(canvas,value,width) {
   dx = -(radius*1.3) * Math.sin(angle);
   dy = (radius*1.3) * Math.cos(angle);
   canvas.lineTo(cx+dx,cy+dy-maxy*0.03);
-  canvas.strokeStyle = 'black';
+  canvas.strokeStyle = '#231f20';
   canvas.stroke();
 
 }
