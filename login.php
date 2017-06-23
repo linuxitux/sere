@@ -38,7 +38,7 @@ if ($valid) {
 <div class="container">
 <div class="metrics">
 <h4>Welcome to sere</h4>
-<p>Enter username and password:</p>
+<p class="smallnote" style="text-align: center;">Please enter username and password:</p>
 <input class="login" type="text" value="<?php echo $_POST['user']; ?>" id="user" name="user" /><br />
 <input class="login" type="password" value="" id="pass" name="pass" /><br />
 <div class="login_error">

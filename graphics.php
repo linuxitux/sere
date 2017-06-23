@@ -19,13 +19,28 @@ class graphics {
 
                 case 'cpu':
                 ?>
-                <div class="small-metrics">
-                <h4>CPU</h4>
-                <canvas id="cpu" width="140" height="85">Your browser doesn't support canvas.</canvas>
+                <div class="metrics-container">
+                  <div class="multi-metrics">
+                    <h4>CPU</h4>
+                    <canvas id="cpu" width="140" height="85">Your browser doesn't support canvas.</canvas>
+                  </div>
+                  <div class="multi-metrics">
+                    <h4>Load</h4>
+                    <center><p class="bigmetric"><span id="lda_value_big">No data.</span></p></center>
+                  </div>
+<br /><br />
+                  <div class="multi-metrics">
+                    <h4>Memory</h4>
+                    <canvas id="mem" width="140" height="85">Your browser doesn't support canvas.</canvas>
+                  </div>
+                  <div class="multi-metrics">
+                    <h4>Swap</h4>
+                    <canvas id="swp" width="140" height="85">Your browser doesn't support canvas.</canvas>
+                  </div>
                 </div>
                 <?php
                 break;
-
+/*
                 case 'mem':
                 ?>
                 <div class="small-metrics">
@@ -76,12 +91,12 @@ class graphics {
                 </div>
                 <?php
                 break;
-
+*/
             }
 
         }
 
-        echo "<br />";
+        //echo "<br />";
 
         // big graphics
         foreach ($this->graphList as $g) {
@@ -109,7 +124,9 @@ class graphics {
                 <td><p><b>&uarr;</b> sent</p></td></tr>
                 </table>
                 </center>
+<!--
                 <p class="smallnote">Total number of kilobytes received and transmitted per second.</p>
+-->
                 </div>
                 <?php
                 break;
@@ -120,10 +137,10 @@ class graphics {
                 <h3>Metrics</h3>
                 <table id="metricstable" class="metricstable">
                 <tr><td>CPU</td><td style="text-align: right;"><span id="cpu_value">No data.</span></td></tr>
-                <tr><td>TPS</td><td style="text-align: right;"><span id="tps_value">No data.</span></td></tr>
+                <tr><td>Load</td><td style="text-align: right;"><span id="lda_value">No data.</span></td></tr>
                 <tr><td>Memory</td><td style="text-align: right;"><span id="mem_value">No data.</span></td></tr>
                 <tr><td>Swap</td><td style="text-align: right;"><span id="swp_value">No data.</span></td></tr>
-                <tr><td>Load</td><td style="text-align: right;"><span id="lda_value">No data.</span></td></tr>
+                <tr><td>I/O (TPS)</td><td style="text-align: right;"><span id="tps_value">No data.</span></td></tr>
                 <tr><td>kB received</td><td style="text-align: right;"><span id="ifr_value">No data.</span></td></tr>
                 <tr><td>kB sent</td><td style="text-align: right;"><span id="ift_value">No data.</span></td></tr>
                 <tr><td>ESTABLISHED</td><td style="text-align: right;"><span id="connections">No data.</span></td></tr>

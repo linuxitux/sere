@@ -78,7 +78,7 @@ margin-right: auto;
 text-align: center;
 }
 
-.metrics, .small-metrics {
+.metrics, .small-metrics, .metrics-container {
 /*
 -webkit-border-radius: 5px;
 border-radius: 5px;
@@ -92,18 +92,25 @@ background-color: #ECECEC;
 /*
 border: 1px solid #bbb;
 */
-max-width: 280px;
-min-width: 140px;
 }
 
-.metrics {
+.metrics, .metrics-container {
+width: 310px;
 padding: 15px;
-height: 240px;
+height: 250px;
 }
 
 .small-metrics {
+min-width: 140px;
 padding: 10px;
 height: 105px;
+}
+
+.multi-metrics {
+display: inline-block;
+vertical-align: top;
+width: 150px;
+height: 110px;
 }
 
 .bigmetric {
