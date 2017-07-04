@@ -246,15 +246,45 @@ function drawTopTable(data) {
 
 function drawUptime()  {
   var uptime = upt.split(',');
+
+  var uptime0 = '';
+  var ctime = '';
+  var up = '';
+  var users = '';
+  var aload1 = '';
+  var load1 = '';
+  var load5 = '';
+  var load15 = '';
+
   if (uptime.length > 1) {
-    var uptime0 = uptime[0].trim().split(' ');
-    var ctime = uptime0[0];
-    var up = uptime0[2] + ' ' + uptime0[3] + ',' + uptime[1];
-    var users = uptime[2].trim();
-    var aload1 = uptime[3].split(':');
-    var load1 = aload1[1].trim();
-    var load5 = uptime[4].trim();
-    var load15 = uptime[5].trim();
+
+    // is the uptime bigger than 1 day?
+    if (upt.indexOf('day') > 0) {
+/*
+ 1:29PM  up 52 days,  1:47, 1 user, load averages: 0.07, 0.09, 0.08
+*/
+      uptime0 = uptime[0].trim().split(' ');
+      ctime = uptime0[0];
+      up = uptime0[2] + ' ' + uptime0[3] + ',' + uptime[1];
+      users = uptime[2].trim();
+      aload1 = uptime[3].split(':');
+      load1 = aload1[1].trim();
+      load5 = uptime[4].trim();
+      load15 = uptime[5].trim();
+    }
+    else {
+/*
+ 12:29:33 up 23:51,  1 user,  load average: 0.11, 0.12, 0.09
+*/
+      uptime0 = uptime[0].trim().split(' ');
+      ctime = uptime0[0];
+      up = uptime0[2];
+      users = uptime[1].trim();
+      aload1 = uptime[2].split(':');
+      load1 = aload1[1].trim();
+      load5 = uptime[3].trim();
+      load15 = uptime[4].trim();
+    }
     var output = '';
     output += '<tr><td>Time</td><td>' + ctime + '</td></tr>';
     output += '<tr><td>Up</td><td>' + up + '</td></tr>';
