@@ -8,7 +8,7 @@ CPU utilization, memory and swap usage, I/O transfers, load, network activity an
 ## Demo
 
 * [Monitoreá la carga de tu servidor Web desde un celular con sere](https://www.linuxito.com/programacion/879-monitorea-la-carga-de-tu-servidor-web-desde-un-celular-con-sere)
-* [Segunda demo de "sere"](https://youtu.be/mGfcBkvquis)
+* [sere 0.2.3 - YouTube](https://youtu.be/SLLiKNZMyqo)
 
 ## Requierements
 
